@@ -32,9 +32,9 @@ class Truck extends Vehicle implements AbleToTow {
     wheels: Wheel[],
     towingCapacity: number
   ) {
-    // TODO: The constructor should call the constructor of the parent class, Vehicle
+    // X TODO: The constructor should call the constructor of the parent class, Vehicle
     super();
-    // TODO: The constructor should initialize the properties of the Truck class
+    // X TODO: The constructor should initialize the properties of the Truck class
     this.vin = vin;
     this.color = color;
     this.make = make;
@@ -43,14 +43,14 @@ class Truck extends Vehicle implements AbleToTow {
     this.weight = weight;
     this.topSpeed = topSpeed;
     this.towingCapacity = towingCapacity;
-    // TODO: The constructor should check if the wheels array has 4 elements and create 4 new default Wheel objects if it does not
+    // X TODO: The constructor should check if the wheels array has 4 elements and create 4 new default Wheel objects if it does not
     if (wheels.length !== 4) {
       this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
     } else {
       this.wheels = wheels;
     }
   }
-  // TODO: Implement the tow method from the AbleToTow interface
+  // ! TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
     // TODO: Get the make an model of the vehicle if it exists
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
@@ -58,11 +58,11 @@ class Truck extends Vehicle implements AbleToTow {
     // TODO: If it is not, log that the vehicle is too heavy to be towed
   }
 
-  // TODO: Override the printDetails method from the Vehicle class
+  // X TODO: Override the printDetails method from the Vehicle class
   override printDetails(): void {
-    // TODO: The method should call the printDetails method of the parent class
+    // X TODO: The method should call the printDetails method of the parent class
     super.printDetails();
-    // TODO: The method should log the details of the Truck
+    // X TODO: The method should log the details of the Truck
     console.log(`VIN: ${this.vin}`);
     console.log(`Color: ${this.color}`);
     console.log(`Make: ${this.make}`);
@@ -83,7 +83,7 @@ class Truck extends Vehicle implements AbleToTow {
     console.log(
       `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
     );
-    // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
+    // X TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
   }
 }
 
