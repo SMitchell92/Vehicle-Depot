@@ -44,8 +44,12 @@ class Motorbike extends Vehicle {
       this.wheels = wheels;
     }
   }
-  // TODO: Implement the wheelie method
-  // TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
+  // X TODO: Implement the wheelie method 
+  wheelie(): void {
+    console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`)
+  }
+
+  // X TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
 
   // X TODO: Override the printDetails method from the Vehicle class
   override printDetails(): void {

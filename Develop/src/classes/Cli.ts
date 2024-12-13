@@ -303,12 +303,12 @@ class Cli {
         // X TODO: check if the selected vehicle is the truck
         if (answers.vehicleToTow.vin === truck.vin) {
           console.log(`${truck.model} cannot tow itself`);
-          this.performActions
+          this.performActions();
         }
         // X TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
-        // ! TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
+        // X TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
         else truck.tow(answers.vehicleToTow);
-        this.performActions
+        this.performActions();
       });
   }
 
@@ -398,19 +398,36 @@ class Cli {
         } else if (answers.action === 'Tow') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
-              if (this.vehicles[i].constructor.name === "Truck"){
+              if (this.vehicles[i].constructor.name === "Truck") {
                 this.findVehicleToTow(this.vehicles[i] as Truck)
+                return
               }
               else {
                 console.log("This vehicle cannot tow")
               }
             }
           }
+          this.performActions();
           return
         }
-
         // X TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
 
+        else if (answers.action === 'Wheelie') {
+          let motorbike: (undefined | Motorbike)
+          for (let i = 0; i < this.vehicles.length; i++) {
+            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (this.vehicles[i].constructor.name === "Motorbike") {
+                motorbike = this.vehicles[i]as Motorbike
+              }
+            }
+          }
+          if (motorbike) {
+            motorbike.wheelie()
+          }
+          else console.log("This vehicle cannot perform a wheelie")
+          this.performActions();
+          return
+        }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
         else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
